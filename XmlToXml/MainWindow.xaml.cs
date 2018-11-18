@@ -116,7 +116,7 @@ namespace XmlToXml
         }
 
 
-        public XNode GeneralNode { get { if (Root == null) { return Root; } else return XCommentNode; } }
+        public XNode GeneralNode { get { if (Root != null) { return Root; } else return XCommentNode; } }
         public XElement Root { get; set; }
         public XComment XCommentNode { get; set; }
 
