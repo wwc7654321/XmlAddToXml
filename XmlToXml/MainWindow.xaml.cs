@@ -483,6 +483,7 @@ namespace XmlToXml
 
             File.WriteAllText(file1, result);
 
+            MessageBox.Show("ok");
             b_changed = false;
         }
         

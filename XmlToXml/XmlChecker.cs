@@ -189,7 +189,7 @@ namespace XmlToXml
                                     cnn = 0;
                                     if (tagn.Length >= 1 && tagn.Last() == '/')
                                     {
-                                        tagn = tagn.Substring(0, tagn.Length - 1);
+                                        tagn = tagn.Substring(0, tagn.Length - 1).Trim();
                                         isClosed = true;
                                     }
                                     int p = tagn.IndexOf(' ');
@@ -301,7 +301,7 @@ namespace XmlToXml
                                     cnn = 0;
                                     if (tagn.Length >= 1 && tagn.Last() == '/')
                                     {
-                                        tagn = tagn.Substring(0, tagn.Length - 1);
+                                        tagn = tagn.Substring(0, tagn.Length - 1).Trim();
                                         isClosed = true;
                                     }
                                     int p = tagn.IndexOf(' ');
