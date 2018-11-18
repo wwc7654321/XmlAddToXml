@@ -1,0 +1,83 @@
+﻿<Window x:Class="XmlToXml.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XmlToXml"
+        xmlns:linq="clr-namespace:System.Xml.Linq;assembly=System.Xml.Linq"
+        mc:Ignorable="d"
+        Title="XmlSetToXml" Height="561.709" Width="650.819" Closing="Window_Closing">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400*"/>
+            <ColumnDefinition Width="400*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="400*"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Label Content="AllXml" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
+            <TextBox x:Name="f1" Margin="57,13,50,0" VerticalAlignment="Top" TextOptions.TextHintingMode="Fixed" IsReadOnly="True" TextChanged="F1_TextChanged">
+                <!--TextBox.Style>
+                <Style TargetType="TextBox" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                  <Style.Resources>
+                    <VisualBrush x:Key="CueBannerBrush" AlignmentX="Left" AlignmentY="Center" Stretch="None">
+                      <VisualBrush.Visual>
+                        <Label x:Name="f1_hint"   Content="Search" Foreground="LightGray" />
+                      </VisualBrush.Visual>
+                    </VisualBrush>
+                  </Style.Resources>
+                  <Style.Triggers>
+                    <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                      <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                    </Trigger>
+                    <Trigger Property="Text" Value="{x:Null}">
+                      <Setter Property="Background" Value="{StaticResource CueBannerBrush}" />
+                    </Trigger>
+                    <Trigger Property="IsKeyboardFocused" Value="True">
+                      <Setter Property="Background" Value="White" />
+                    </Trigger>
+                  </Style.Triggers>
+                </Style>
+              </TextBox.Style-->
+            </TextBox>
+            <Button x:Name="btn_f1" Content=".." Margin="0,12,25,0" VerticalAlignment="Top" Click="Btn_f1_Click" HorizontalAlignment="Right" Width="20"/>
+            <TreeView x:Name="list1" Margin="10,41,10,10" >
+                <TreeView.ItemTemplate>
+                    <HierarchicalDataTemplate DataType="{x:Type local:OneXmlNode}" ItemsSource="{Binding Path=Children}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image VerticalAlignment="Center" Source="{Binding Icon}" Width="16" Height="16" Margin="0,0,2,2"></Image>
+                            <TextBlock VerticalAlignment="Center" Text="{Binding ShowText}" ToolTip="{Binding Path}" ></TextBlock>
+                            <CheckBox Content="" IsChecked="{Binding IsChecked}" Margin="2,0,0,0"  IsEnabled="{Binding IsEnable}" Checked="ToggleButton_OnChecked_Changes" Unchecked="ToggleButton_OnChecked_Changes" Tag="{Binding }"></CheckBox>
+                            <StackPanel.ToolTip>
+                                <TextBlock VerticalAlignment="Center" Text="{Binding Text}" TextWrapping="Wrap" MaxWidth="200" ></TextBlock>
+                            </StackPanel.ToolTip>
+                        </StackPanel>
+                    </HierarchicalDataTemplate>
+                </TreeView.ItemTemplate>
+            </TreeView>
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Label Content="AddXml" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
+            <TextBox x:Name="f2" Margin="66,14,40,0" VerticalAlignment="Top" IsReadOnly="True" TextChanged="F2_TextChanged"/>
+            <Button x:Name="btn_f2" Content=".." Margin="0,12,15,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="20" Click="Btn_f2_Click" IsEnabled="false"/>
+            <TreeView x:Name="list2" Margin="10,41,10,10" >
+                <TreeView.ItemContainerStyle>
+                    <Style TargetType="{x:Type TreeViewItem}">
+                        <Setter Property="IsExpanded" Value="True"/>
+                    </Style>
+                </TreeView.ItemContainerStyle>
+            </TreeView>
+        </Grid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="2" Height="25" VerticalAlignment="Top">
+            <Button x:Name="btn_do" Content="Save" HorizontalAlignment="Right"   VerticalAlignment="Top" Width="75" Margin="0,0,10,0" Click="btn_do_Click"/>
+
+            <CheckBox x:Name="AllA" Content="AllA" Margin="6,4,0,0" VerticalAlignment="Top" Checked="AllA_Checked" Unchecked="AllA_Unchecked" HorizontalAlignment="Left" Width="43"/>
+            <CheckBox x:Name="AllB" Content="AllB" Margin="54,4,0,0" VerticalAlignment="Top" Checked="AllB_Checked" Unchecked="AllB_Unchecked" HorizontalAlignment="Left" Width="42"/>
+
+        </Grid>
+    </Grid>
+</Window>
